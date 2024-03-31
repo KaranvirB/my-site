@@ -1,113 +1,111 @@
-import Image from "next/image";
+'use client'
+import { useTransform, useScroll, motion, scroll, useSpring } from 'framer-motion'
+import { useEffect, useRef } from "react";
+import Lenis from '@studio-freight/lenis';
+import { Albert_Sans } from 'next/font/google';
+import Link from 'next/link';
+import Image from 'next/image';
+import dino from '../../public/img/24930593642580a16c91bc6bea418a4f.png'
+import linkedin from '../../public/img/circle-linkedin-512.webp'
+import github from '../../public/img/25231.png'
+import { ProjectScroll } from './components/projects';
+
+const albert = Albert_Sans({subsets: ["latin"]})
 
 export default function Home() {
+  
+  const isBrowser = () => typeof window !== 'undefined';
+  const container1 = useRef(null)
+  const container2 = useRef(null)
+  const container3 = useRef(null)
+  const container4 = useRef(null)
+  const name = useRef(null)
+  const end = useRef(null)
+
+  const { scrollYProgress: target1 } = useScroll({
+    target: name,
+    offset: ['start end', 'start start']
+  })
+
+  const { scrollYProgress: target2 } = useScroll({
+    target: end,
+    offset: ['start end', 'start start']
+  })
+
+  function scrollToAbout() {
+    if (!isBrowser()) return;
+    window.scrollTo({ top: 500, behavior: 'smooth' });
+  }
+  const scale1 = useTransform(target1, [0, 1], [1.8, 0.5])
+  const scale2 = useTransform(target2, [0, 1], [0.5, 1.3])
+
+  useEffect( () => {
+    window.history.scrollRestoration = 'manual'
+  }, [])
+
+  useEffect( () => {
+    const lenis = new Lenis({
+      duration: 1.3
+    })
+    
+    function raf(time:number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    
+    requestAnimationFrame(raf)
+  })
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <main id='main' className="items-center bg-black mx-[5vh] mt-[40vh] space-y-[80vh]">
+
+        <motion.div initial="hidden" animate="visible" style={{ scale: scale1 }} ref={name} className="sticky top-0 will-change-auto" variants={{
+          hidden: {
+            opacity: 0,
+            scale: 0.5,
+          },
+          visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+              delay: 0.5,
+              duration: 0.5
+            }
+          },
+        }}>
+          <div className="flex items-center justify-center font-thin text-glacier-500 tracking-widest md:text-9xl sm:text-7xl">Karanvir Bhogal</div>
+        </motion.div>
+
+        <div className="flex-col md:h-[calc(100vh-8rem)] sm:h-[calc(100vh-4rem)] bg-glacier-500 w-full font-extralight sticky md:top-[8rem] sm:top-[4rem] z-5 border-transparent rounded-t-[3rem]">
+          <h1 className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-200 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 pl-16 hover:border-transparent rounded-t-[3rem]">About me</h1>
+          <motion.div initial={{ opacity: 0,  }} whileInView={{ opacity: 1 }} transition={{ delay: 0.1, duration: 1 }} className="flex w-full p-16 space-x-[10%]">
+            <p className="w-[50%] md:text-3xl sm:text-xl tracking-wide md:leading-loose text-glacier-200 my-auto">
+              Hello! My name is Karanvir and I am a recent Software Engineering graduate from Ontario Tech University. 
+              I mainly specialize in object oriented programming and web programming, but I have also worked on machine learning, mobile app development, and database querying.
+              Outside of programming, some of my interests include Dinosaurs, Transformers, Music, and Art.
+            </p>
+            <div className="flex w-[40%] h-[40%] my-auto aspect-square">
+              <Image src={dino} alt="Dinosaur Logo" className="my-auto"></Image>
+            </div>
+          </motion.div>
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+        <ProjectScroll/>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        <div className="flex-col md:h-[calc(100vh-22rem)] sm:h-[calc(100vh-13rem)] bg-glacier-500 w-full font-extralight sticky md:top-[22rem] sm:top-[13rem] z-20 border-transparent rounded-t-[3rem]">
+          <h1 id='links' className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-200 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 pl-16 hover:border-transparent rounded-t-[3rem]">Links</h1>
+          <div className="flex justify-center w-full p-[5%] space-x-[20%]">
+            <Link href='https://www.linkedin.com/in/karanvir-bhogal' target='_blank' className="size-[20%]"><Image src={linkedin} alt="LinkedIn logo"></Image></Link>
+            <Link href='https://github.com/KaranvirB' target='_blank' className="size-[20%]"><Image src={github} alt="Github logo"></Image></Link>
+          </div>
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <div className="flex items-center justify-center bg-black sticky w-full md:h-[calc(100vh-29rem)] sm:h-[calc(100vh-17.5rem)] md:top-[29rem] sm:top-[17.5rem] z-20 border-transparent rounded-t-[3rem]">
+          <motion.div style={{scale: scale2}} ref={end} className="flex bg-black font-thin text-glacier-500 tracking-widest md:text-9xl sm:text-7xl">
+            Thank you for visiting!
+          </motion.div>
+        </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </main>
   );
 }
