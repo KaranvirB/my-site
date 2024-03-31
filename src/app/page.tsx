@@ -14,11 +14,6 @@ const albert = Albert_Sans({subsets: ["latin"]})
 
 export default function Home() {
   
-  const isBrowser = () => typeof window !== 'undefined';
-  const container1 = useRef(null)
-  const container2 = useRef(null)
-  const container3 = useRef(null)
-  const container4 = useRef(null)
   const name = useRef(null)
   const end = useRef(null)
 
@@ -32,10 +27,6 @@ export default function Home() {
     offset: ['start end', 'start start']
   })
 
-  function scrollToAbout() {
-    if (!isBrowser()) return;
-    window.scrollTo({ top: 500, behavior: 'smooth' });
-  }
   const scale1 = useTransform(target1, [0, 1], [1.8, 0.5])
   const scale2 = useTransform(target2, [0, 1], [0.5, 1.3])
 
@@ -57,7 +48,7 @@ export default function Home() {
   })
 
   return (
-      <main id='main' className="items-center bg-black mx-[5vh] mt-[40vh] space-y-[80vh]">
+      <main className="items-center bg-black mx-[5vh] mt-[40vh] space-y-[80vh]">
 
         <motion.div initial="hidden" animate="visible" style={{ scale: scale1 }} ref={name} className="sticky top-0 will-change-auto" variants={{
           hidden: {
@@ -93,7 +84,7 @@ export default function Home() {
         <ProjectScroll/>
 
         <div className="flex-col md:h-[calc(100vh-22rem)] sm:h-[calc(100vh-13rem)] bg-glacier-500 w-full font-extralight sticky md:top-[22rem] sm:top-[13rem] z-20 border-transparent rounded-t-[3rem]">
-          <h1 id='links' className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-200 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 pl-16 hover:border-transparent rounded-t-[3rem]">Links</h1>
+          <h1 className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-200 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 pl-16 hover:border-transparent rounded-t-[3rem]">Links</h1>
           <div className="flex justify-center w-full p-[5%] space-x-[20%]">
             <Link href='https://www.linkedin.com/in/karanvir-bhogal' target='_blank' className="size-[20%]"><Image src={linkedin} alt="LinkedIn logo"></Image></Link>
             <Link href='https://github.com/KaranvirB' target='_blank' className="size-[20%]"><Image src={github} alt="Github logo"></Image></Link>
