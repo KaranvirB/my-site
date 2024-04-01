@@ -75,7 +75,7 @@ export default function Home() {
               I mainly specialize in object oriented programming and web programming, but I have also worked on machine learning, mobile app development, and databases.
               Outside of programming, some of my interests include Dinosaurs, Transformers, Music, and Art.
             </p>
-            <div className="flex w-[40%] h-[40%] my-auto mx-auto aspect-square">
+            <div className="flex md:w-[40%] md:h-[40%] my-auto mx-auto aspect-square">
               <Image src={dino} alt="Dinosaur Logo" className="my-auto"></Image>
             </div>
           </motion.div>
@@ -92,7 +92,7 @@ export default function Home() {
         </div>
 
         <div className="flex items-center justify-center bg-black sticky w-full md:h-[calc(100vh-29rem)] sm:h-[calc(100vh-17.5rem)] md:top-[29rem] sm:top-[17.5rem] z-20 border-transparent rounded-t-[3rem]">
-          <motion.div style={{scale: scale2}} ref={end} className="flex bg-black font-thin text-glacier-500 tracking-widest md:text-9xl sm:text-7xl">
+          <motion.div style={{scale: scale2}} ref={end} className="flex sm:text-center bg-black font-thin text-glacier-500 tracking-widest md:text-9xl sm:text-6xl">
             Thank you for visiting!
           </motion.div>
         </div>

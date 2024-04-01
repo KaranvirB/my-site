@@ -54,8 +54,8 @@ export const Projects = ({project}: {project: Project}) => {
                 <h1 className="px-[5%] pt-[5%] md:text-4xl sm:text-2xl">{project.title}</h1>
                 <p className="px-[5%] pt-[5%] md:text-2xl sm:text-l">{project.info}</p>   
             </div>
-            <div className="md:p-[5%] mx-auto md:w-[70%] overflow-hidden">
-                <Image src={project.src} alt={project.alt} unoptimized className="border-4 border-glacier-500 rounded-[5%] "></Image>
+            <div className="md:p-[5%] mx-auto md:w-[80%] overflow-hidden">
+                <Image src={project.src} alt={project.alt} unoptimized className="md:border-4 sm:border md:border-glacier-500 sm:border-transparent md:rounded-[5%]  "></Image>
             </div>
             {/* <iframe 
                 className="p-[5%] mx-auto size-[70%]" 
