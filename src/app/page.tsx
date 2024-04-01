@@ -64,18 +64,18 @@ export default function Home() {
             }
           },
         }}>
-          <div className="flex items-center justify-center font-thin text-glacier-500 tracking-widest md:text-9xl sm:text-7xl">Karanvir Bhogal</div>
+          <div className="flex items-center justify-center font-thin text-glacier-500 tracking-widest md:text-9xl sm:text-6xl">Karanvir Bhogal</div>
         </motion.div>
 
         <div className="flex-col md:h-[calc(100vh-8rem)] sm:h-[calc(100vh-4rem)] bg-glacier-500 w-full font-extralight sticky md:top-[8rem] sm:top-[4rem] z-5 border-transparent rounded-t-[3rem]">
           <h1 className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-200 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 pl-16 hover:border-transparent rounded-t-[3rem]">About me</h1>
-          <motion.div initial={{ opacity: 0,  }} whileInView={{ opacity: 1 }} transition={{ delay: 0.1, duration: 1 }} className="flex w-full p-16 space-x-[10%]">
-            <p className="w-[50%] md:text-3xl sm:text-xl tracking-wide md:leading-loose text-glacier-200 my-auto">
+          <motion.div initial={{ opacity: 0,  }} whileInView={{ opacity: 1 }} transition={{ delay: 0.1, duration: 1 }} className="flex md:flex-row sm:flex-col w-full p-16 md:space-x-[10%]">
+            <p className="md:w-[50%] md:text-3xl sm:text-xl tracking-wide md:leading-loose text-glacier-200 my-auto">
               Hello! My name is Karanvir and I am a recent Software Engineering graduate from Ontario Tech University. 
-              I mainly specialize in object oriented programming and web programming, but I have also worked on machine learning, mobile app development, and database querying.
+              I mainly specialize in object oriented programming and web programming, but I have also worked on machine learning, mobile app development, and databases.
               Outside of programming, some of my interests include Dinosaurs, Transformers, Music, and Art.
             </p>
-            <div className="flex w-[40%] h-[40%] my-auto aspect-square">
+            <div className="flex w-[40%] h-[40%] my-auto mx-auto aspect-square">
               <Image src={dino} alt="Dinosaur Logo" className="my-auto"></Image>
             </div>
           </motion.div>
