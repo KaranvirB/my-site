@@ -11,8 +11,8 @@ const config: Config = {
       'albert': ["'Albert Sans'"]
     },
     screens: {
-      'sm': '540px',
-      'md': '1080px'
+      'sm': {'max': '1259px'},
+      'md': {'min': '1260px'}
     },
     extend: {
       colors: {

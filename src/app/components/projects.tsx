@@ -19,7 +19,7 @@ type Project = {
 const projects: Project[] = [
     {
         title: "Smart Blinds",
-        info: "Blinds which use sensors to learn the users' habits, and create it's own operating schedule with machine learning. Accompanied by a mobile app packed with functions to operate the blinds remotely.",
+        info: "Blinds which use sensors to learn the users' habits, and create it's own operating schedule with machine learning.",
         src: blinds,
         alt: "Promotional video for smart blinds",
         id: 0
@@ -79,9 +79,9 @@ export const ProjectScroll = () => {
     const x = useTransform(scrollYProgress, [0, 0.6, 0.9], ["280%", "-50%", "-52%"])
 
     return(
-        <div className="flex-col md:h-[calc(100vh-15rem)] sm:h-[calc(100vh-8.5rem)] bg-black w-full font-extralight sticky md:top-[15rem] sm:top-[8.5rem] z-10 border-transparent rounded-t-[3rem] overflow-hidden">
-            <h1 className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-300 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 md:pl-16 sm:pl-8 hover:border-transparent rounded-t-[3rem]">My work</h1>
-            <motion.div style={{ x }} className="flex flex-row md:w-[200%] sm:w-[200%] pb-[10vh]">
+        <div className="flex-col md:h-[calc(100vh-13rem)] sm:h-[calc(100vh-8.5rem)] bg-black w-full font-extralight sticky md:top-[13rem] sm:top-[8.5rem] z-10 border-transparent rounded-t-[3rem] overflow-hidden">
+            <h1 className="md:h-[5rem] sm:h-[4.5rem] md:text-5xl sm:text-3xl w-full font-serif text-glacier-300 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 md:pl-16 sm:pl-8 hover:border-transparent rounded-t-[3rem]">My work</h1>
+            <motion.div style={{ x }} className="flex flex-row h-[100%] md:w-[200%] sm:w-[200%] pb-[10vh] pt-[3vh]">
                 {projects.map((project) => {
                     return <Projects project={project} key={project.id}/>
                 })}
