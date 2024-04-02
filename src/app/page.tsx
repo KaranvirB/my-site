@@ -48,7 +48,7 @@ export default function Home() {
   })
 
   return (
-      <main className="items-center bg-black mx-[5vh] mt-[40vh] space-y-[80vh]">
+      <main className="items-center bg-black md:mx-[5vh] sm:mx-[3vh] mt-[40vh] space-y-[80vh]">
 
         <motion.div initial="hidden" animate="visible" style={{ scale: scale1 }} ref={name} className="sticky top-0 will-change-auto" variants={{
           hidden: {
@@ -68,7 +68,7 @@ export default function Home() {
         </motion.div>
 
         <div className="flex-col md:h-[calc(100vh-8rem)] sm:h-[calc(100vh-4rem)] bg-glacier-500 w-full font-extralight sticky md:top-[8rem] sm:top-[4rem] z-5 border-transparent rounded-t-[3rem]">
-          <h1 className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-200 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 pl-16 hover:border-transparent rounded-t-[3rem]">About me</h1>
+          <h1 className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-200 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 md:pl-16 sm:pl-8 hover:border-transparent rounded-t-[3rem]">About me</h1>
           <motion.div initial={{ opacity: 0,  }} whileInView={{ opacity: 1 }} transition={{ delay: 0.1, duration: 1 }} className="flex md:flex-row sm:flex-col w-full p-16 md:space-x-[10%]">
             <p className="md:w-[50%] md:text-3xl sm:text-xl tracking-wide md:leading-loose text-glacier-200 my-auto">
               Hello! My name is Karanvir and I am a recent Software Engineering graduate from Ontario Tech University. 
@@ -84,7 +84,7 @@ export default function Home() {
         <ProjectScroll/>
 
         <div className="flex-col md:h-[calc(100vh-22rem)] sm:h-[calc(100vh-13rem)] bg-glacier-500 w-full font-extralight sticky md:top-[22rem] sm:top-[13rem] z-20 border-transparent rounded-t-[3rem]">
-          <h1 className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-200 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 pl-16 hover:border-transparent rounded-t-[3rem]">Links</h1>
+          <h1 className="md:h-[7rem] sm:h-[4.5rem] md:text-7xl sm:text-3xl w-full font-serif text-glacier-200 tracking-wider hover:bg-glacier-300 duration-300 hover:text-black p-5 md:pl-16 sm:pl-8 hover:border-transparent rounded-t-[3rem]">Links</h1>
           <div className="flex justify-center w-full p-[5%] space-x-[20%]">
             <Link href='https://www.linkedin.com/in/karanvir-bhogal' target='_blank' className="size-[20%]"><Image src={linkedin} alt="LinkedIn logo"></Image></Link>
             <Link href='https://github.com/KaranvirB' target='_blank' className="size-[20%]"><Image src={github} alt="Github logo"></Image></Link>

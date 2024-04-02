@@ -11,7 +11,7 @@ const config: Config = {
       'albert': ["'Albert Sans'"]
     },
     screens: {
-      'sm': '360px',
+      'sm': '540px',
       'md': '1080px'
     },
     extend: {
